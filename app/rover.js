@@ -1,7 +1,7 @@
 class Rover {
-  constructor(startXPosition, startYPosition, direction) {
-    this.startXPosition = startXPosition
-    this.startYPosition = startYPosition
+  constructor(xPosition, yPosition, direction) {
+    this.xPosition = xPosition
+    this.yPosition = yPosition
     this.direction = direction
   }
 }
