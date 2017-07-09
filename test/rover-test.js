@@ -25,7 +25,7 @@ describe('Rover', () => {
 
   it('should have a method to adjust', () => {
     const rover = new Rover(5, 5, 'E')
-    assert.isFunction(rover.adjust);
+    assert.isFunction(rover.adjust)
   })
 
   it('adjust should interpret directions correctly', () => {
@@ -39,6 +39,13 @@ describe('Rover', () => {
   it('should have a method to retrievePosition', () => {
     const rover = new Rover(5, 5, 'E')
     assert.isFunction(rover.retrievePosition);
+  })
+
+  it('retrievePosition should retrieve an updated position', () => {
+    const rover = new Rover(1, 2, 'N')
+    assert.equal(rover.retrievePosition(), '1 2 N')
+    rover.adjust('LMLMLMLMM')
+    assert.equal(rover.retrievePosition(), '1 3 N')
   })
 
 })
