@@ -4,17 +4,28 @@ class RoverController {
     this.list = []
   }
 
-  addRover(xPosition, yPosition, direction) {
-    this.list.push(new Rover(xPosition, yPosition, direction))
+  addRover(xPosition, yPosition, direction, self) {
+    this.list.push(new Rover(xPosition, yPosition, direction, self))
   }
 
   isRoverAtPosition(xCoordinate, yCoordinate) {
+    let check = false
     for (let i = 0; i < this.list.length; i++) {
       if (this.list[i].xPosition === xCoordinate && this.list[i].yPosition === yCoordinate) {
-        return true
-      } else {
-        return false
+        check = true
       }
+    }
+    return check
+  }
+
+  isOutOfBounds(xCoordinate, yCoordinate){
+    if (this.plateau.lowerXLimit > xCoordinate || xCoordinate > this.plateau.upperXLimit) {
+      return true
+    }
+    else if (this.plateau.lowerYLimit > yCoordinate || yCoordinate > this.plateau.upperYLimit) {
+      return true
+    } else {
+      return false
     }
   }
 

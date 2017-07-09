@@ -25,7 +25,7 @@ describe('RoverController', () => {
     const plateau = new Plateau(3, 3)
     const roverController = new RoverController(plateau)
     assert.deepEqual(roverController.list, [])
-    roverController.addRover(1, 1, 'N')
+    roverController.addRover(1, 1, 'N', roverController)
     assert.equal(roverController.list.length, 1)
     assert.isObject(roverController.list[0])
     assert.equal(roverController.list[0].xPosition, 1)
@@ -43,8 +43,18 @@ describe('RoverController', () => {
     const plateau = new Plateau(3, 3)
     const roverController = new RoverController(plateau)
     roverController.addRover(1, 1, 'N')
-    assert.equal(roverController.isRoverAtPosition(1, 1), true)
-    assert.equal(roverController.isRoverAtPosition(2, 1), false)
+    roverController.addRover(1, 4, 'N')
+    roverController.addRover(2, 1, 'N')
+    assert.equal(roverController.isRoverAtPosition(1, 4), true)
+    assert.equal(roverController.isRoverAtPosition(3, 1), false)
+  })
+
+  it('isOutOfBounds returns true or false as expected', () => {
+    const plateau = new Plateau(2, 2)
+    const roverController = new RoverController(plateau)
+    roverController.addRover(2, 2, 'N')
+    assert.equal(roverController.isOutOfBounds(3, 3), true)
+    assert.equal(roverController.isOutOfBounds(2, 1), false)
   })
 
   it('has a method to retrieve all rover positions', () => {
