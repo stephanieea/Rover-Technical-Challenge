@@ -62,6 +62,7 @@ sendInstructions.click(() => {
   output.append(`Rover instructed to move to ${roverController.list[roverController.list.length - 1].xPosition}
     ${roverController.list[roverController.list.length - 1].yPosition}
     ${roverController.list[roverController.list.length - 1].direction}<br/>`)
+  roverInstructions.val('')
 })
 
 printRoverPositions.click(() => {
