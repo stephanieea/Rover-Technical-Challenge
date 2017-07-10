@@ -1,8 +1,8 @@
 class Rover {
   constructor(xPosition, yPosition, direction, roverController) {
-    this.xPosition = xPosition
-    this.yPosition = yPosition
-    this.direction = direction
+    this.xPosition = Number(xPosition)
+    this.yPosition = Number(yPosition)
+    this.direction = direction.toUpperCase()
     this.roverController = roverController
   }
 
@@ -11,7 +11,7 @@ class Rover {
     for(let i = 0; i < command.length; i++) {
       let tentativeXPosition
       let tentativeYPosition
-      switch (command[i]) {
+      switch (command[i].toUpperCase()) {
       case 'L':
         if (this.direction === 'N') {
           this.direction = 'W'
@@ -36,17 +36,17 @@ class Rover {
         break
       case 'M':
         if (this.direction === 'N') {
-          tentativeXPosition = this.xPosition
-          tentativeYPosition = this.yPosition + 1
+          tentativeXPosition = Number(this.xPosition)
+          tentativeYPosition = Number(this.yPosition) + 1
         }  else if (this.direction === 'E') {
-          tentativeXPosition = this.xPosition + 1
+          tentativeXPosition = Number(this.xPosition) + 1
           tentativeYPosition = this.yPosition
         } else if (this.direction === 'S') {
-          tentativeXPosition = this.xPosition
-          tentativeYPosition = this.yPosition - 1
+          tentativeXPosition = Number(this.xPosition)
+          tentativeYPosition = Number(this.yPosition) - 1
         } else if (this.direction === 'W') {
-          tentativeXPosition = this.xPosition - 1
-          tentativeYPosition = this.yPosition
+          tentativeXPosition = Number(this.xPosition) - 1
+          tentativeYPosition = Number(this.yPosition)
         }
         try {
           if (this.roverController.isRoverAtPosition(tentativeXPosition, tentativeYPosition)) {
@@ -63,6 +63,14 @@ class Rover {
         this.xPosition = tentativeXPosition
         this.yPosition = tentativeYPosition
         break
+      default:
+        try {
+          throw new Error('Invalid instructions')
+        }
+        catch(e) {
+          alert(e)
+          throw e
+        }
       }
     }
   }

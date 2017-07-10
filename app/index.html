@@ -8,18 +8,28 @@
   <section class="input">
     <input class="upperXLimit" type="number" placeholder="Plateau Width">
     <input class="upperYLimit" type="number" placeholder="Plateau Height">
-    <button>Create Plateau</button>
+    <button class="createPlateau">Create Plateau</button>
     <hr/>
     <input class="roverXPosition" type="number" placeholder="Rover X Coordinate">
-    <input class="roverYPosition" type="number" placeholder="Rover X Coordinate">
+    <input class="roverYPosition" type="number" placeholder="Rover Y Coordinate">
     <input class="roverDirection" type="string" placeholder="Rover Direction">
-    <button>Add Rover</button>
+    <button class="addRover">Add Rover</button>
     <hr/>
-    <input class="roverDirections" type="string" placeholder="Direct Rover">
-    <button>Send Directions</button>
+    <input class="roverInstructions" type="string" placeholder="Instruct Rover">
+    <button class="sendInstructions">Send Instructions</button>
     <hr/>
-    <button>Print Rover Positions</button>
+    <button class="printRoverPositions">Print Rover Positions</button>
+    <button class="reload" style="float:right">Clear</button>
+    <hr/>
   </section>
+  <section class="output">
+    <h2>Log</h2>
+    <hr/>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src='../app/plateau.js'></script>
+  <script src='../app/rover.js'></script>
+  <script src='../app/roverController.js'></script>
   <script src="index.js"></script>
 </body>
 </html>

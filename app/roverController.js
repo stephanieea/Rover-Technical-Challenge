@@ -10,8 +10,9 @@ class RoverController {
 
   isRoverAtPosition(xCoordinate, yCoordinate) {
     let check = false
+    console.log(this)
     for (let i = 0; i < this.list.length; i++) {
-      if (this.list[i].xPosition === xCoordinate && this.list[i].yPosition === yCoordinate) {
+      if (this.list[i].xPosition === Number(xCoordinate) && this.list[i].yPosition === Number(yCoordinate)) {
         check = true
       }
     }
@@ -30,6 +31,6 @@ class RoverController {
   }
 
   retrieveAllRoverPositions(){
-    return this.list.map(rover => `${rover.xPosition} ${rover.yPosition} ${rover.direction}`)
+    return this.list.map(rover => `${rover.xPosition} ${rover.yPosition} ${rover.direction} <br/>`)
   }
 }
